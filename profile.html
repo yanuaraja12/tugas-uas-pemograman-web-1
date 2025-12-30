@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROFILE - THE LEGEND OF DEKU</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #1b4d3e;
+            --light-green: #2ecc71;
+            --accent-yellow: #f1c40f;
+            --sidebar-width: 250px;
+            --hero-gradient: linear-gradient(135deg, #1b4d3e, #2ecc71);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('gambar/BG IZUKU MIDORIA.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            overflow-x: hidden;
+            animation: transitionIn 0.75s ease-out;
+        }
+
+        @keyframes transitionIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- SIDEBAR STYLE (Konsisten dengan Home) --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: rgba(27, 77, 62, 0.95);
+            backdrop-filter: blur(10px);
+            border-right: 3px solid var(--accent-yellow);
+            padding: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+        }
+
+        .sidebar-brand {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-yellow);
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .nav-sidebar {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-sidebar li { margin-bottom: 12px; }
+
+        .nav-link-custom {
+            color: rgba(255,255,255,0.8) !important;
+            font-weight: 500;
+            padding: 12px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 3px solid transparent;
+            font-size: 1.1rem;
+        }
+
+        .nav-link-custom:hover, .nav-link-custom.active {
+            background: linear-gradient(90deg, rgba(241, 196, 15, 0.15), transparent);
+            color: var(--accent-yellow) !important;
+            border-left: 3px solid var(--accent-yellow);
+            transform: translateX(5px);
+        }
+
+        .student-info {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(241, 196, 15, 0.2);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        /* --- MAIN CONTENT AREA --- */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 30px;
+            width: calc(100% - var(--sidebar-width));
+            min-height: 100vh;
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 2rem;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        /* --- PROFILE ELEMENTS --- */
+        .profile-img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--light-green);
+            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.4);
+        }
+
+        .role-badge {
+            background: var(--hero-gradient);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-green);
+            border-bottom: 4px solid var(--accent-yellow);
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 15px;
+            border-bottom: 3px solid #ddd;
+            height: 100%;
+        }
+
+        .progress {
+            height: 12px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar { background: var(--hero-gradient); }
+
+        .stat-label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* --- FOOTER --- */
+        .footer-custom {
+            margin-top: 50px;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--primary-green);
+            border-radius: 20px 20px 0 0;
+            border-top: 4px solid var(--accent-yellow);
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 100%; height: auto; position: relative;
+                flex-direction: row; justify-content: space-between;
+            }
+            .sidebar-brand { margin-bottom: 0; font-size: 1.2rem; }
+            .nav-sidebar { display: flex; }
+            .nav-sidebar li { margin-left: 10px; margin-bottom: 0; }
+            .nav-link-custom { padding: 8px 12px; font-size: 0.9rem; border-left: none; }
+            .main-content { margin-left: 0; width: 100%; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-brand">UA ACADEMY</div>
+        <ul class="nav-sidebar">
+            <li><a href="index.html" class="nav-link-custom">HOME</a></li>
+            <li><a href="profile.html" class="nav-link-custom active">PROFILE</a></li>
+            <li><a href="album.html" class="nav-link-custom">ALBUM</a></li>
+            <li><a href="contact.html" class="nav-link-custom">CONTACT</a></li>
+        </ul>
+        <div class="student-info">
+            <strong style="color: var(--accent-yellow);">Yanuar M. Giffari</strong><br>
+            NIM: 251011700037
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="main-card">
+            <div class="row">
+                <div class="col-lg-4 text-center border-end">
+                    <img src="gambar/IZUKU MIDORIA.jpg" alt="Izuku Midoriya" class="profile-img">
+                    <h2 class="mt-3 fw-bold" style="font-family: 'Cinzel', serif; color: var(--primary-green);">IZUKU MIDORIYA</h2>
+                    <div class="role-badge">Pewaris Ke-9 One For All</div>
+                    <p class="mt-3 fst-italic text-muted">"Aku harus bekerja sepuluh kali lebih keras dari orang lain untuk berhasil!"</p>
+
+                    <div class="mt-4 text-start px-2">
+                        <h5 class="fw-bold mb-3" style="color: var(--primary-green);">Abilities Stats</h5>
+                        <div class="stat-item">
+                            <div class="stat-label"><span>Power (OFA)</span><span>100%</span></div>
+                            <div class="progress"><div class="progress-bar" style="width: 100%"></div></div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label"><span>Intelligence</span><span>95%</span></div>
+                            <div class="progress"><div class="progress-bar" style="width: 95%"></div></div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label"><span>Speed</span><span>90%</span></div>
+                            <div class="progress"><div class="progress-bar" style="width: 90%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 ps-lg-5 mt-4 mt-lg-0">
+                    <h3 class="section-title">Informasi Pribadi</h3>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <strong>Nama Pahlawan:</strong><br> Deku
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <strong>Status:</strong><br> Siswa U.A. High School
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <strong>Quirk Utama:</strong><br> One For All
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <strong>Mentor:</strong><br> All Might
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title">Tentang Izuku</h3>
+                    <p style="text-align: justify; line-height: 1.8;">
+                        Izuku Midoriya adalah seorang remaja yang awalnya lahir tanpa kekuatan super (Quirkless). Meskipun sering diremehkan, kegigihan dan hati nuraninya yang tulus membawanya terpilih sebagai pewaris kekuatan <b>One For All</b>. Ia menghabiskan waktu 10 bulan membersihkan Pantai Dagobah untuk mempersiapkan tubuhnya menerima kekuatan besar ini.
+                    </p>
+
+                    <h3 class="section-title mt-4">Pencapaian & Teknik</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-transparent border-0 ps-0">
+                            🟢 Menguasai teknik <b>Shoot Style</b> untuk efisiensi bertarung menggunakan kaki.
+                        </li>
+                        <li class="list-group-item bg-transparent border-0 ps-0">
+                            🌀 Membangkitkan Quirk tambahan: <i>Blackwhip, Float, dan Danger Sense.</i>
+                        </li>
+                        <li class="list-group-item bg-transparent border-0 ps-0">
+                            💪 Berhasil mengalahkan penjahat besar seperti Overhaul dan Muscular.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <hr class="w-50 mx-auto" style="border-color: var(--accent-yellow);">
+                <h2 class="fw-bold mt-4" style="color: var(--primary-green); letter-spacing: 5px;">PLUS ULTRA!</h2>
+            </div>
+        </div>
+
+        <footer class="footer-custom">
+            <div class="container">
+                <p class="mb-2" style="font-size: 0.9rem; opacity: 0.8;">© 2025 The Legend of Deku Project</p>
+                <div style="font-family: 'Cinzel', serif; color: var(--accent-yellow); font-weight: bold; font-size: 1.2rem;">
+                    YANUAR MUHAMMAD GIFFARI
+                </div>
+                <div style="height: 2px; width: 60%; margin: 15px auto; background: linear-gradient(to right, transparent, var(--accent-yellow), transparent); opacity: 0.5;"></div>
+                <p class="mb-0 small">NIM: 251011700037 | Kelas: 01SIFP001</p>
+                <p class="small mb-0" style="color: var(--light-green); font-weight: 600;">Program Studi Sistem Informasi - Universitas Pamulang</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

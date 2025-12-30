@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTACT - THE LEGEND OF DEKU</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #1b4d3e;
+            --light-green: #2ecc71;
+            --accent-yellow: #f1c40f;
+            --sidebar-width: 250px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('gambar/BG IZUKU MIDORIA.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            overflow-x: hidden;
+            animation: transitionIn 0.75s ease-out;
+        }
+
+        @keyframes transitionIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- SIDEBAR STYLE (Konsisten) --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: rgba(27, 77, 62, 0.95);
+            backdrop-filter: blur(10px);
+            border-right: 3px solid var(--accent-yellow);
+            padding: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+        }
+
+        .sidebar-brand {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-yellow);
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .nav-sidebar {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-sidebar li { margin-bottom: 12px; }
+
+        .nav-link-custom {
+            color: rgba(255,255,255,0.8) !important;
+            font-weight: 500;
+            padding: 12px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 3px solid transparent;
+            font-size: 1.1rem;
+        }
+
+        .nav-link-custom:hover, .nav-link-custom.active {
+            background: linear-gradient(90deg, rgba(241, 196, 15, 0.15), transparent);
+            color: var(--accent-yellow) !important;
+            border-left: 3px solid var(--accent-yellow);
+            transform: translateX(5px);
+        }
+
+        .student-info {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(241, 196, 15, 0.2);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        /* --- MAIN CONTENT AREA --- */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 30px;
+            width: calc(100% - var(--sidebar-width));
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 2rem;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            margin-bottom: auto;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-green);
+            font-weight: bold;
+            border-bottom: 4px solid var(--accent-yellow);
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border-bottom: 4px solid #ddd;
+            transition: 0.3s;
+            height: 100%;
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--light-green);
+        }
+
+        .emoji-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .btn-send {
+            background: var(--primary-green);
+            color: white;
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-weight: bold;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-send:hover {
+            background: var(--light-green);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* --- FOOTER --- */
+        .footer-custom {
+            margin-top: 50px;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--primary-green);
+            border-radius: 20px 20px 0 0;
+            border-top: 4px solid var(--accent-yellow);
+            box-shadow: 0 -5px 20px rgba(241, 196, 15, 0.3);
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 100%; height: auto; position: relative;
+                flex-direction: row; align-items: center; padding: 15px;
+                justify-content: space-between; border-right: none;
+                border-bottom: 3px solid var(--accent-yellow);
+            }
+            .sidebar-brand { margin-bottom: 0; font-size: 1.2rem; }
+            .nav-sidebar { display: flex; }
+            .nav-sidebar li { margin-left: 10px; margin-bottom: 0; }
+            .nav-link-custom { padding: 8px 12px; font-size: 0.9rem; border-left: none; }
+            .main-content { margin-left: 0; width: 100%; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-brand">UA ACADEMY</div>
+        <ul class="nav-sidebar">
+            <li><a href="index.html" class="nav-link-custom">HOME</a></li>
+            <li><a href="profile.html" class="nav-link-custom">PROFILE</a></li>
+            <li><a href="album.html" class="nav-link-custom">ALBUM</a></li>
+            <li><a href="contact.html" class="nav-link-custom active">CONTACT</a></li>
+        </ul>
+        <div class="student-info">
+            <strong style="color: var(--accent-yellow);">Yanuar M. Giffari</strong><br>
+            NIM: 251011700037
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="main-card">
+            <div class="text-center mb-5">
+                <h1 class="display-5 section-title">HUBUNGI HERO AGENCY</h1>
+                <p class="text-muted mt-3">Kirim pesan dukungan atau pertanyaan pendaftaran untuk generasi pahlawan baru.</p>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="info-item">
+                        <span class="emoji-icon">✉️</span>
+                        <h5 class="fw-bold">Email</h5>
+                        <p class="text-muted small mb-0">YannAcademian@gmail.com</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-item">
+                        <span class="emoji-icon">📞</span>
+                        <h5 class="fw-bold">Emergency</h5>
+                        <p class="text-muted small mb-0">+62 812 1689 6497</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-item">
+                        <span class="emoji-icon">📍</span>
+                        <h5 class="fw-bold">Lokasi</h5>
+                        <p class="text-muted small mb-0">Unpam Victor, Pamulang, Tangerang Selatan</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form style="background: #f1f3f5; padding: 40px; border-radius: 20px; border: 1px solid #ddd;">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold" style="color: var(--primary-green);">NAMA LENGKAP</label>
+                            <input type="text" class="form-control border-0 p-3" style="border-radius: 10px;" placeholder="Nama Anda...">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold" style="color: var(--primary-green);">EMAIL</label>
+                            <input type="email" class="form-control border-0 p-3" style="border-radius: 10px;" placeholder="email@gmail.com">
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold" style="color: var(--primary-green);">PESAN</label>
+                            <textarea class="form-control border-0 p-3" style="border-radius: 10px;" rows="4" placeholder="Tuliskan pesanmu..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-send w-100 py-3">KIRIM PESAN 🚀</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <hr class="w-50 mx-auto" style="border-color: var(--accent-yellow);">
+                <h2 class="fw-bold mt-4" style="color: var(--primary-green); letter-spacing: 5px;">PLUS ULTRA!</h2>
+            </div>
+        </div>
+
+        <footer class="footer-custom">
+            <div class="container">
+                <p class="mb-2" style="font-size: 0.9rem; opacity: 0.8;">© 2025 The Legend of Deku Project</p>
+                <div style="font-family: 'Cinzel', serif; color: var(--accent-yellow); font-weight: bold; font-size: 1.2rem;">
+                    YANUAR MUHAMMAD GIFFARI
+                </div>
+                <div style="height: 2px; width: 60%; margin: 15px auto; background: linear-gradient(to right, transparent, var(--accent-yellow), transparent); opacity: 0.5;"></div>
+                <p class="mb-0 small">NIM: 251011700037 | Kelas: 01SIFP001</p>
+                <p class="small mb-0" style="color: var(--light-green); font-weight: 600;">Program Studi Sistem Informasi - Universitas Pamulang</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
